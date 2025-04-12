@@ -1,0 +1,114 @@
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1rem 0;
+    box-shadow: var(--sombra);
+    border-radius: 8px;
+    background-color: white;
+}
+
+.tabela {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 600px;
+}
+
+/* Alinhamento geral */
+.tabela th,
+.tabela td {
+    padding: 12px 12px; /* Padding mais consistente */
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle; /* Adicionado para alinhamento vertical */
+}
+
+/* Cabeçalhos */
+.tabela th {
+    background-color: var(--cor-primaria);
+    color: white;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    text-align: left; /* Padrão para a maioria das colunas */
+}
+
+/* Coluna Idade (5ª coluna) - Centralizada */
+.tabela td:nth-child(5),
+.tabela th:nth-child(5) {
+    text-align: center;
+    padding: 12px 8px;
+}
+
+/* Coluna Status (7ª coluna) */
+.tabela td:nth-child(7),
+.tabela th:nth-child(7) {
+    text-align: center;
+    padding: 12px 8px;
+    min-width: 90px;
+}
+
+/* Coluna Ações */
+.tabela td:last-child,
+.tabela th:last-child {
+    text-align: center;
+    width: 150px; /* Largura aumentada para melhor acomodar os ícones */
+    padding: 12px 8px;
+}
+
+/* Efeitos de linha */
+.tabela tr:hover {
+    background-color: rgba(76, 175, 80, 0.05);
+}
+
+.tabela tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Ações - Ícones */
+.acoes-diretas {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+}
+
+.acao-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-size: 18px; /* Reduzido de 20px para melhor proporção */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cores dos botões */
+.acao-btn.editar { color: var(--cor-primaria); }
+.acao-btn.editar:hover { background: rgba(35, 144, 222, 0.1); }
+.acao-btn.excluir { color: #C62828; }
+.acao-btn.excluir:hover { background: rgba(198, 40, 40, 0.1); }
+.acao-btn.visualizar { color: var(--cor-primaria); }
+.acao-btn.visualizar:hover { background: rgba(35, 144, 222, 0.1); }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tabela-container {
+        margin: 1rem -1rem;
+        width: calc(100% + 2rem);
+        border-radius: 0;
+    }
+
+    .tabela {
+        min-width: 100%;
+    }
+
+    .tabela td:last-child {
+        width: 130px;
+    }
+
+    .acao-btn {
+        padding: 5px;
+        font-size: 16px;
+    }
+}
