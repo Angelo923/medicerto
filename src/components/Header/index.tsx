@@ -12,7 +12,7 @@ const Header = ({ openMenu, setOpenMenu }: IHeader) => {
             >
                 {openMenu ? <FaTimes /> : <FaBars />}
             </button>
-            <h1>Sistema de Gestão <FaUserDoctor /></h1>
+            <h1>Medicerto <FaUserDoctor /></h1>
         </header>
     );
 };
