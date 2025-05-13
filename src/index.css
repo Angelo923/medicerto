@@ -3,8 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 :root {
@@ -81,6 +79,62 @@ body {
   z-index: 10;
   display: flex;
   align-items: center;
+  min-height: 80px;
+  justify-content: space-between; /* Isso vai separar os itens para cada extremidade */
+}
+
+.cabecalho__direita {
+  display: flex;
+  gap: 1rem;
+  align-self: flex-end; /* força apenas os ícones para baixo */
+  font-size: 1.25rem;
+}
+
+.cabecalho__direita div {
+  cursor: pointer; /* Muda o cursor para "mãozinha" */
+  transition: transform 0.2s; /* Efeito suave ao clicar */
+}
+
+.cabecalho__direita div:hover {
+  transform: scale(1.1); /* Aumenta levemente no hover */
+  opacity: 0.9; /* Opcional: reduz opacidade */
+}
+
+/* Esconde elementos não relevantes na impressão */
+@media print {
+  /* Elementos que devem ser ocultados na impressão */
+  .cabecalho,
+  .menu-lateral,
+  .campo-busca,
+  .botao-adicionar,
+  .tabela th:nth-last-child(1),  /* Oculta o cabeçalho "Ações" */
+  .tabela td:nth-last-child(1),   /* Oculta os botões de ação */
+  .acoes-diretas {                /* Garante que os botões sejam ocultos (redundância opcional) */
+    display: none !important;
+  }
+
+  /* Reset de margens e padding para melhor aproveitamento do papel */
+  body {
+    padding: 0;
+    margin: 0;
+    font-size: 12pt; /* Tamanho de fonte legível na impressão */
+  }
+
+  /* Estilização opcional para a tabela impressa */
+  .tabela {
+    width: 100% !important;
+    border-collapse: collapse;
+  }
+  .tabela th,
+  .tabela td {
+    border: 1px solid #ddd; /* Bordas visíveis na impressão */
+    padding: 6px;
+  }
+  .tabela th {
+    background-color: #f2f2f2 !important; /* Garante fundo cinza mesmo em navegadores que não imprimem cores */
+    -webkit-print-color-adjust: exact; /* Força o fundo a aparecer (Chrome) */
+    print-color-adjust: exact;
+  }
 }
 
 .barra-lateral {
@@ -240,12 +294,6 @@ body {
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
-/* Dropdown de Ações */
-.dropdown-actions {
-  position: relative;
-  display: inline-block;
-}
-
 .action-button {
   background: none;
   border: none;
@@ -349,18 +397,16 @@ body {
 .dashboard-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 .dashboard-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .dashboard-main-title {
   color: #333;
   font-size: 2rem;
-  margin-bottom: 0.5rem;
 }
 
 /* Stats Grid */
@@ -368,7 +414,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .stat-card {
@@ -386,6 +432,11 @@ body {
 
 .stat-icon {
   font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.dash-icon {
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 

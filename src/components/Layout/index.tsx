@@ -5,6 +5,7 @@ import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import {BsPlusCircle} from "react-icons/bs";
 import SearchBar from "../SearchBar";
+import { Button } from '@/components/ui/button.tsx';
 
 const Layout = ({
     children,
@@ -17,8 +18,8 @@ const Layout = ({
 
     return (
         <div className="pagina-container">
-            <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
-            <Sidebar openMenu={openMenu} closeMenu={closeMenu} />
+            <Header  />
+            <Sidebar  />
 
             <main className="conteudo-principal" onClick={() => openMenu && closeMenu()}>
                 {showSearchBar && (
@@ -28,7 +29,7 @@ const Layout = ({
                         setSearchTerm={setSearchTerm || (() => {})}
                         placeholder="Buscar pacientes..."
                     />
-                        <button className="botao-adicionar">Adicionar Paciente <BsPlusCircle /></button>
+                      <Button className="botao-adicionar">Adicionar Paciente <BsPlusCircle /></Button>
                     </div>
                 )}
                 {children}

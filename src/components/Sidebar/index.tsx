@@ -1,19 +1,23 @@
 import {Link} from "react-router-dom";
-import {ISidebar} from "./interface.ts";
+import { FcAutomatic, FcBullish, FcCalendar, FcConferenceCall } from 'react-icons/fc';
 
-const Sidebar = ({openMenu, closeMenu}: ISidebar) => {
+const Sidebar = () => {
     return (
-        <aside className={`barra-lateral ${openMenu ? 'ativo' : ''}`}>
+        <aside className="barra-lateral">
             <nav>
                 <ul>
-                    <li>
-                        <Link to="/dashboard" onClick={closeMenu}>Dashboard</Link>
+                    <li className="dash-icon">
+                        <Link to="/dashboard" ><FcBullish /> Dashboard</Link>
                     </li>
-                    <li>
-                        <Link to="/pacientes" onClick={closeMenu}>Pacientes</Link>
+                    <li className="dash-icon">
+                        <Link to="/pacientes" > <FcConferenceCall /> Pacientes</Link>
                     </li>
-                    <li>
-                        <Link to="/configuracoes" onClick={closeMenu}>Configurações</Link>
+                    <li className="dash-icon">
+                        <Link to="#" ><FcCalendar /> Agendamentos</Link>
+                    </li>
+
+                    <li className="dash-icon">
+                        <Link to="/configuracoes" ><FcAutomatic /> Configurações</Link>
                     </li>
                 </ul>
             </nav>

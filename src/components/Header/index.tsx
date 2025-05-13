@@ -1,20 +1,33 @@
-import { FaBars, FaTimes } from 'react-icons/fa';
-import {IHeader} from "./interface.ts";
-import {FaUserDoctor} from "react-icons/fa6";
+import { FaFileExcel, FaFilePdf, FaUserDoctor } from 'react-icons/fa6';
+import { PiPrinterFill } from 'react-icons/pi';
 
-const Header = ({ openMenu, setOpenMenu }: IHeader) => {
-    return (
-        <header className="cabecalho">
-            <button
-                className="menu-hamburguer"
-                onClick={() => setOpenMenu(!openMenu)}
-                aria-label={openMenu ? "Fechar menu" : "Abrir menu"}
-            >
-                {openMenu ? <FaTimes /> : <FaBars />}
-            </button>
-            <h1>Medicerto <FaUserDoctor /></h1>
-        </header>
-    );
+const Header = () => {
+  const handlePdfClick = () => {
+    console.log("PDF clicado!");
+    // Adicione sua lógica aqui (exportar PDF)
+  };
+
+  const handleExcelClick = () => {
+    console.log("Excel clicado!");
+    // Adicione sua lógica aqui (exportar Excel)
+  };
+
+  const handlePrintClick = () => {
+    window.print()
+  };
+
+  return (
+    <header className="cabecalho">
+      <div className="cabecalho__esquerda">
+        <h1>Medicerto <FaUserDoctor /></h1>
+      </div>
+      <div className="cabecalho__direita">
+        <div onClick={handlePdfClick}><FaFilePdf /></div>
+        <div onClick={handleExcelClick}><FaFileExcel /></div>
+        <div onClick={handlePrintClick}><PiPrinterFill /></div>
+      </div>
+    </header>
+  );
 };
 
 export default Header;
